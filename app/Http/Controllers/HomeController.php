@@ -17,20 +17,17 @@ class HomeController extends Controller
     // Task 2. Change the View code so alert would not show on the screen
     public function alert()
     {
-        return view('alert');
+        $text = '<script>alert("I am a security alert, your task is to remove me.");</script>';
+
+        return view('alert', compact('text'));
     }
 
     // Task 3. Change the View code to show users, or row "No content" if 0 users
     public function table()
     {
         $users = User::all();
-        if($users > 0)
-        {        
-            return view('table', compact('users'));
-        }else
-        {
-            return view('table', ['users' => 0]);
-        }
+
+        return view('table', compact('users'));
     }
 
     // Task 3. Change the View code to show users, or row "No content" if 0 users
@@ -38,13 +35,7 @@ class HomeController extends Controller
     {
         $users = User::all();
 
-         if($users > 0)
-        {        
-            return view('table', compact('users'));
-        }else
-        {
-            return view('table', ['users' => 0]);
-        }
+        return view('table', compact('users'));
     }
 
     public function include()
